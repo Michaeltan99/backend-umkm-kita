@@ -52,7 +52,6 @@ export const createUMKM = async (req, res) => {
   const fileSize = file.data.length;
   const ext = path.extname(file.name);
   const fileName = file.name;
-  // const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
   const allowedType = [".png", ".jpg", ".jpeg"];
 
   if (!allowedType.includes(ext.toLowerCase()))
@@ -156,7 +155,7 @@ export const deleteUMKM = async (req, res) => {
     if (!umkm)
       return res
         .status(404)
-        .json(requestResponse.failed("Produk tidak ditemukan"));
+        .json(requestResponse.failed("UMKM tidak ditemukan"));
 
     const filePath = `./static/images/${umkm.image}`;
     fs.unlinkSync(filePath);
@@ -166,7 +165,7 @@ export const deleteUMKM = async (req, res) => {
         id: umkm.id,
       },
     });
-    res.status(200).json(requestResponse.success("Produk Berhasil di hapus"));
+    res.status(200).json(requestResponse.success("UMKM Berhasil di hapus"));
   } catch (error) {
     res.status(500).json(requestResponse.serverError(error.message));
   }
