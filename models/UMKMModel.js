@@ -1,10 +1,9 @@
 import { Sequelize } from 'sequelize';
 import db from '../config/Database.js';
-import Users from './UserModel.js';
 
 const { DataTypes } = Sequelize;
 
-const Products = db.define('umkm', {
+const UMKM = db.define('umkm', {
 
   umkmName: {
     type: DataTypes.STRING,
@@ -39,4 +38,4 @@ const Products = db.define('umkm', {
   freezeTableName: true,
 });
 
-export default Products;
+export default UMKM;
