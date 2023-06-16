@@ -113,7 +113,7 @@ export const updateUMKM = async (req, res) => {
           .status(422)
           .json(requestResponse.failed("Gambar harus lebih kecil dari 5 mb"));
 
-      const filePath = `./static/images/${UMKM.image}`;
+      const filePath = `./static/images/${umkm.image}`;
       fs.unlinkSync(filePath);
 
       file.mv(`./static/images/${fileName}`, (err) => {
@@ -122,7 +122,6 @@ export const updateUMKM = async (req, res) => {
       });
     }
 
-    const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     const { umkmName, category, description } = req.body;
 
     await UMKM.update(
