@@ -13,8 +13,22 @@ const UMKM = db.define('umkm', {
       len: [3, 100],
     },
   },
+  alamat: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
   image: {
     type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  rating: {
+    type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true,
