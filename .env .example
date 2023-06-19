@@ -1,0 +1,7 @@
+SESS_SECRET = "umkm"
+
+DATABASE_NAME = "umkm_kita"
+DATABASE_USER = "root"
+DATABASE_PASSWORD = 
+DATABASE_HOST = "localhost"
+DATABASE_PORT = 3306
