@@ -5,6 +5,13 @@ const { DataTypes } = Sequelize;
 
 const UMKM = db.define('umkm', {
 
+  umkmId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
   umkmName: {
     type: DataTypes.STRING,
     allowNull: false,

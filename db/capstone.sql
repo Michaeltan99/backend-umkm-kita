@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2023 pada 08.26
+-- Waktu pembuatan: 19 Jun 2023 pada 10.49
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.0.25
 
@@ -99,6 +99,7 @@ INSERT INTO `sessions` (`sid`, `expires`, `data`, `createdAt`, `updatedAt`) VALU
 
 CREATE TABLE `umkm` (
   `id` int(11) NOT NULL,
+  `umkmId` varchar(30) NOT NULL,
   `umkmName` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
@@ -114,26 +115,27 @@ CREATE TABLE `umkm` (
 -- Dumping data untuk tabel `umkm`
 --
 
-INSERT INTO `umkm` (`id`, `umkmName`, `alamat`, `phone`, `image`, `rating`, `category`, `description`, `createdAt`, `updatedAt`) VALUES
-(5, 'Warung Makan Babi Guling Dauh', 'Terminal Wisata Tanah Lot', '082132756652', 'https://awsimages.detik.net.id/community/media/visual/2022/06/03/rekomendasi-babi-guling-1.jpeg?w=1200', 5, 'makanan', 'Warung Makan Babi Guling', '2023-06-19 05:46:11', '2023-06-19 05:46:11'),
-(6, 'Warung Anugerah', 'Kediri No. 61 Kuta', '087860233433', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/6-C3AJKBNTJX3FLE/hero/03665eeadadf4675acab798dc9c93a21_1660118634443723103.webp', 5, 'makanan', 'Warung Muslim Anugerah', '2023-06-19 05:46:27', '2023-06-19 05:46:27'),
-(7, 'Warung Sate Madura', 'Jl. Ken Dedes 12 B Kuta Badung', '087760247016', 'https://lh5.googleusercontent.com/p/AF1QipPgLFTEaryIVAug99UslYOKcmGhE4ZeiIrlaIZB=w390-h262-n-k-no', 4, 'makanan', 'Warung Sate dan Gule Madura', '2023-06-19 05:46:42', '2023-06-19 05:46:42'),
-(8, 'Warung Wardani', 'Jl. Yudistira No.2, Dangin Puri Kauh, Kec. Denpasar Utara, Kota Denpasar, Bali', '0361224398', 'https://lh3.googleusercontent.com/p/AF1QipP7WSjLzAC4LNLvjmCHLNBgtHAd6z4xmljqwUrt=s1360-w1360-h1020', 4.4, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 05:51:54', '2023-06-19 05:51:54'),
-(9, 'Warung Bali Tulen', 'Jl. Imam Bonjol No.213, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali', '036148982', 'https://lh5.googleusercontent.com/p/AF1QipPYXiJdej16y8kjM0tdGgXZPXmmxhgdjbAuAW69=w390-h262-n-k-no', 4.5, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 05:58:31', '2023-06-19 05:58:31'),
-(10, 'Warung Bali Ayu Sari Merta', 'Jl. Raya Sesetan, Sesetan, Denpasar Selatan, Kota Denpasar, Bali', '081239624918', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=k0qy-7qOU5-MPiY5XA1RzA&cb_client=search.gws-prod.gps&yaw=59.782555&pitch=0&thumbfov=100&w=780&h=262', 5, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:00:47', '2023-06-19 06:00:47'),
-(11, 'Warung Pojok Gajah Mada', 'Jl. Gajah Mada No.16, Dauh Puri Kaja, Kec. Denpasar Utara, Kota Denpasar, Bali', '087860500033', 'https://lh5.googleusercontent.com/p/AF1QipNB-MFsF6fTS3R3bsakXF_poGbdECnqAI_RSOEl=w390-h262-n-k-no', 4.5, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:03:37', '2023-06-19 06:03:37'),
-(12, 'Warung Nasi Bali Bu Nyoman', 'Jl. Gunung Salak No.14, Tegal Lantang, Padangsambian Klod, Kec. Denpasar Bar., Kota Denpasar, Bali', '087860213255', 'https://lh5.googleusercontent.com/p/AF1QipPF5jALdbqJNua0DnRzY2vXtWfW2N8TfG9BgSY=w390-h262-n-k-no', 4.6, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:05:49', '2023-06-19 06:05:49'),
-(13, 'Warung Nasi Tekor Bali', 'Kawasan Desa Budaya Kertalangu, Jl. By Pass Ngurah Rai Tohpati No.28, Kesiman Kertalangu, Kec. Denpasar Tim., Kota Denpasar, Bali', '082144225501', 'https://lh5.googleusercontent.com/p/AF1QipNY3hJr_3-6H10irKAL0xWfJYoShht4VuPquyks=w195-h130-n-k-no', 4.7, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:07:15', '2023-06-19 06:07:15'),
-(14, 'Warung Nasi Bali Men Ebong', 'Gg. Camar, Sesetan, Denpasar Selatan, Kota Denpasar, Bali', '087861424009', 'https://lh5.googleusercontent.com/p/AF1QipPzvZjj6ck_uF3pmMrHzcI2v0tN9AyNAi6SYSmk=w259-h262-n-k-no', 4.7, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:08:35', '2023-06-19 06:08:35'),
-(15, 'UD Arta Jaya', 'Kukuh Marga', '081338540432', 'https://lh3.googleusercontent.com/p/AF1QipNMoLzCDunMrUm7AGuErJq0AP42OALaNTFNqnM=s1360-w1360-h1020', 3, 'kerajinan', 'Usaha Dagang Pengukiran Kayu dan Batu', '2023-06-19 06:22:42', '2023-06-19 06:22:42'),
-(16, 'Wiwins Ukir', 'Jl. Wisnu Br. Batannyuh Marga, Tabanan', '08123645644', 'https://lh3.googleusercontent.com/p/AF1QipPPqDiw4dncA_cH7ea1z-F01bxqWIy1Sgh0bhj7=s1360-w1360-h1020', 5, 'kerajinan', 'Usaha Dagang Pengukiran Bangunan Style Bali', '2023-06-19 06:23:06', '2023-06-19 06:23:06'),
-(17, 'Anugrah Rattan', 'Jl. Raya Semer Br. Paliatan No. 41', '081338134865', 'https://uwitan.id/wp-content/uploads/2021/07/Mebel-Rotan-Gambar-Utama-728x410.jpg', 4.7, 'kerajinan', 'Usaha Dagang Pembuatan Furniture Dari Rotan', '2023-06-19 06:23:23', '2023-06-19 06:23:23'),
-(18, 'Mangku Art Studio', 'Jl. Raya Guwang', '081338345732', 'https://images.tokopedia.net/img/cache/500-square/product-1/2017/1/8/5860090/5860090_b8419b56-c867-432b-bd4e-f4672d6fe1aa_2048_0.jpg', 4.9, 'kerajinan', 'Usaha Dagang Pembuatan Lukisan', '2023-06-19 06:23:45', '2023-06-19 06:23:45'),
-(19, 'Toko Barokat Jaya', 'Jl. By Pass Ngurah Rai Tuban', '0818347750', 'https://tpid.lombokbaratkab.go.id/media/product_media/WhatsApp-Image-2021-10-15-at-13.32.23.jpeg', 4.3, 'kerajinan', 'Usaha Dagang Pembuatan Kap Lampu Dari Rotan', '2023-06-19 06:24:03', '2023-06-19 06:24:03'),
-(20, 'Etnik Collection', 'Darmasaba', '0818349752', 'https://lzd-img-global.slatic.net/g/p/6bef6c75edcec7e104346167c9cc8722.jpg_720x720q80.jpg', 3.6, 'fashion', 'Usaha Dagang Pembuatan Destar Udeng', '2023-06-19 06:24:25', '2023-06-19 06:24:25'),
-(21, 'Surya Iron Srt', 'Jl. Nuri No. 18', '0813385147422', 'https://images.baleomol.com/production/uploads/hovelshopR2qH/2022/product/1000334/1661562916585794z19jpg.jpg?w=500&h=500', 3.4, 'kerajinan', 'Usaha Dagang Pembuatan Hiasan Dinding', '2023-06-19 06:24:38', '2023-06-19 06:24:38'),
-(22, 'UD Gardenia', 'Jl. Hayam Wuruk No 111', '081337942834', 'https://static.republika.co.id/uploads/images/inpicture_slide/pekerja-membuat-pot-bunga-tanaman-hias-di-jalan-pagar_201019150352-795.jpg', 3.3, 'kerajinan', 'Usaha Dagang Pembuatan Pot', '2023-06-19 06:24:55', '2023-06-19 06:24:55'),
-(23, 'Padma Sari', 'Jl. Gajah Mada Pasar Kumbasari Blok J No.22', '081334541482', 'https://lh3.googleusercontent.com/p/AF1QipNMoLzCDunMrUm7AGuErJq0AP42OALaNTFNqnM=s1360-w1360-h1020', 4.2, 'fashion', 'Usaha Dagang Pembuatan Kain Tenun Ikat', '2023-06-19 06:25:09', '2023-06-19 06:25:09');
+INSERT INTO `umkm` (`id`, `umkmId`, `umkmName`, `alamat`, `phone`, `image`, `rating`, `category`, `description`, `createdAt`, `updatedAt`) VALUES
+(5, '001', 'Warung Makan Babi Guling Dauh', 'Terminal Wisata Tanah Lot', '082132756652', 'https://awsimages.detik.net.id/community/media/visual/2022/06/03/rekomendasi-babi-guling-1.jpeg?w=1200', 5, 'makanan', 'Warung Makan Babi Guling', '2023-06-19 05:46:11', '2023-06-19 05:46:11'),
+(6, '002', 'Warung Anugerah', 'Kediri No. 61 Kuta', '087860233433', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/6-C3AJKBNTJX3FLE/hero/03665eeadadf4675acab798dc9c93a21_1660118634443723103.webp', 5, 'makanan', 'Warung Muslim Anugerah', '2023-06-19 05:46:27', '2023-06-19 05:46:27'),
+(7, '003', 'Warung Sate Madura', 'Jl. Ken Dedes 12 B Kuta Badung', '087760247016', 'https://lh5.googleusercontent.com/p/AF1QipPgLFTEaryIVAug99UslYOKcmGhE4ZeiIrlaIZB=w390-h262-n-k-no', 4, 'makanan', 'Warung Sate dan Gule Madura', '2023-06-19 05:46:42', '2023-06-19 05:46:42'),
+(8, '004', 'Warung Wardani', 'Jl. Yudistira No.2, Dangin Puri Kauh, Kec. Denpasar Utara, Kota Denpasar, Bali', '0361224398', 'https://lh3.googleusercontent.com/p/AF1QipP7WSjLzAC4LNLvjmCHLNBgtHAd6z4xmljqwUrt=s1360-w1360-h1020', 4.4, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 05:51:54', '2023-06-19 05:51:54'),
+(9, '005', 'Warung Bali Tulen', 'Jl. Imam Bonjol No.213, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali', '036148982', 'https://lh5.googleusercontent.com/p/AF1QipPYXiJdej16y8kjM0tdGgXZPXmmxhgdjbAuAW69=w390-h262-n-k-no', 4.5, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 05:58:31', '2023-06-19 05:58:31'),
+(10, '006', 'Warung Bali Ayu Sari Merta', 'Jl. Raya Sesetan, Sesetan, Denpasar Selatan, Kota Denpasar, Bali', '081239624918', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=k0qy-7qOU5-MPiY5XA1RzA&cb_client=search.gws-prod.gps&yaw=59.782555&pitch=0&thumbfov=100&w=780&h=262', 5, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:00:47', '2023-06-19 06:00:47'),
+(11, '007', 'Warung Pojok Gajah Mada', 'Jl. Gajah Mada No.16, Dauh Puri Kaja, Kec. Denpasar Utara, Kota Denpasar, Bali', '087860500033', 'https://lh5.googleusercontent.com/p/AF1QipNB-MFsF6fTS3R3bsakXF_poGbdECnqAI_RSOEl=w390-h262-n-k-no', 4.5, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:03:37', '2023-06-19 06:03:37'),
+(12, '008', 'Warung Nasi Bali Bu Nyoman', 'Jl. Gunung Salak No.14, Tegal Lantang, Padangsambian Klod, Kec. Denpasar Bar., Kota Denpasar, Bali', '087860213255', 'https://lh5.googleusercontent.com/p/AF1QipPF5jALdbqJNua0DnRzY2vXtWfW2N8TfG9BgSY=w390-h262-n-k-no', 4.6, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:05:49', '2023-06-19 06:05:49'),
+(13, '009', 'Warung Nasi Tekor Bali', 'Kawasan Desa Budaya Kertalangu, Jl. By Pass Ngurah Rai Tohpati No.28, Kesiman Kertalangu, Kec. Denpasar Tim., Kota Denpasar, Bali', '082144225501', 'https://lh5.googleusercontent.com/p/AF1QipNY3hJr_3-6H10irKAL0xWfJYoShht4VuPquyks=w195-h130-n-k-no', 4.7, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:07:15', '2023-06-19 06:07:15'),
+(14, '010', 'Warung Nasi Bali Men Ebong', 'Gg. Camar, Sesetan, Denpasar Selatan, Kota Denpasar, Bali', '087861424009', 'https://lh5.googleusercontent.com/p/AF1QipPzvZjj6ck_uF3pmMrHzcI2v0tN9AyNAi6SYSmk=w259-h262-n-k-no', 4.7, 'makanan', 'Warung Makananan Khas Bali', '2023-06-19 06:08:35', '2023-06-19 06:08:35'),
+(15, '011', 'UD Arta Jaya', 'Kukuh Marga', '081338540432', 'https://lh3.googleusercontent.com/p/AF1QipNMoLzCDunMrUm7AGuErJq0AP42OALaNTFNqnM=s1360-w1360-h1020', 3, 'kerajinan', 'Usaha Dagang Pengukiran Kayu dan Batu', '2023-06-19 06:22:42', '2023-06-19 06:22:42'),
+(16, '012', 'Wiwins Ukir', 'Jl. Wisnu Br. Batannyuh Marga, Tabanan', '08123645644', 'https://lh3.googleusercontent.com/p/AF1QipPPqDiw4dncA_cH7ea1z-F01bxqWIy1Sgh0bhj7=s1360-w1360-h1020', 5, 'kerajinan', 'Usaha Dagang Pengukiran Bangunan Style Bali', '2023-06-19 06:23:06', '2023-06-19 06:23:06'),
+(17, '013', 'Anugrah Rattan', 'Jl. Raya Semer Br. Paliatan No. 41', '081338134865', 'https://uwitan.id/wp-content/uploads/2021/07/Mebel-Rotan-Gambar-Utama-728x410.jpg', 4.7, 'kerajinan', 'Usaha Dagang Pembuatan Furniture Dari Rotan', '2023-06-19 06:23:23', '2023-06-19 06:23:23'),
+(18, '014', 'Mangku Art Studio', 'Jl. Raya Guwang', '081338345732', 'https://images.tokopedia.net/img/cache/500-square/product-1/2017/1/8/5860090/5860090_b8419b56-c867-432b-bd4e-f4672d6fe1aa_2048_0.jpg', 4.9, 'kerajinan', 'Usaha Dagang Pembuatan Lukisan', '2023-06-19 06:23:45', '2023-06-19 06:23:45'),
+(19, '015', 'Toko Barokat Jaya', 'Jl. By Pass Ngurah Rai Tuban', '0818347750', 'https://tpid.lombokbaratkab.go.id/media/product_media/WhatsApp-Image-2021-10-15-at-13.32.23.jpeg', 4.3, 'kerajinan', 'Usaha Dagang Pembuatan Kap Lampu Dari Rotan', '2023-06-19 06:24:03', '2023-06-19 06:24:03'),
+(20, '016', 'Etnik Collection', 'Darmasaba', '0818349752', 'https://lzd-img-global.slatic.net/g/p/6bef6c75edcec7e104346167c9cc8722.jpg_720x720q80.jpg', 3.6, 'fashion', 'Usaha Dagang Pembuatan Destar Udeng', '2023-06-19 06:24:25', '2023-06-19 06:24:25'),
+(21, '017', 'Surya Iron Srt', 'Jl. Nuri No. 18', '0813385147422', 'https://images.baleomol.com/production/uploads/hovelshopR2qH/2022/product/1000334/1661562916585794z19jpg.jpg?w=500&h=500', 3.4, 'kerajinan', 'Usaha Dagang Pembuatan Hiasan Dinding', '2023-06-19 06:24:38', '2023-06-19 06:24:38'),
+(22, '018', 'UD Gardenia', 'Jl. Hayam Wuruk No 111', '081337942834', 'https://static.republika.co.id/uploads/images/inpicture_slide/pekerja-membuat-pot-bunga-tanaman-hias-di-jalan-pagar_201019150352-795.jpg', 3.3, 'kerajinan', 'Usaha Dagang Pembuatan Pot', '2023-06-19 06:24:55', '2023-06-19 06:24:55'),
+(23, '019', 'Padma Sari', 'Jl. Gajah Mada Pasar Kumbasari Blok J No.22', '081334541482', 'https://lh3.googleusercontent.com/p/AF1QipNMoLzCDunMrUm7AGuErJq0AP42OALaNTFNqnM=s1360-w1360-h1020', 4.2, 'fashion', 'Usaha Dagang Pembuatan Kain Tenun Ikat', '2023-06-19 06:25:09', '2023-06-19 06:25:09'),
+(24, '020', 'Bambu Musik', 'Jl. Br Tengah', '08164700010', 'https://lh5.googleusercontent.com/p/AF1QipMiFrDiBTV4HZD6s5_m5Dyb7D2oNuTav-sNP3GZ=w600-h650-p-k-no', 4, 'kerajinan', 'Usaha Dagang Pembuatan Alat Musik Dari Bambu', '2023-06-19 10:44:20', '2023-06-19 10:44:20');
 
 --
 -- Indexes for dumped tables
@@ -159,7 +161,7 @@ ALTER TABLE `umkm`
 -- AUTO_INCREMENT untuk tabel `umkm`
 --
 ALTER TABLE `umkm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

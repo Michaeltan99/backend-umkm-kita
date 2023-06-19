@@ -8,7 +8,7 @@ export const getUMKM = async (req, res) => {
   try {
     let response;
     response = await UMKM.findAll({
-      attributes: ["umkmName", "alamat", "phone", "image", "rating", "category", "description"],
+      attributes: ["umkmId", "umkmName", "alamat", "phone", "image", "rating", "category", "description"],
     });
     res.status(200).json(requestResponse.successWithData(response));
   } catch (error) {
@@ -31,7 +31,7 @@ export const getUMKMById = async (req, res) => {
 
     let response;
     response = await UMKM.findOne({
-      attributes: ["umkmName", "alamat", "phone", "image", "rating", "category", "description"],
+      attributes: ["umkmId", "umkmName", "alamat", "phone", "image", "rating", "category", "description"],
       where: {
         id: umkm.id,
       },
@@ -43,9 +43,10 @@ export const getUMKMById = async (req, res) => {
 };
 
 export const createUMKM = async (req, res) => {
-    const { umkmName, alamat, phone, image, rating, category, description } = req.body;
+    const { umkmId, umkmName, alamat, phone, image, rating, category, description } = req.body;
     try {
       await UMKM.create({
+        umkmId,
         umkmName,
         alamat,
         phone,
@@ -75,10 +76,11 @@ export const updateUMKM = async (req, res) => {
         .status(404)
         .json(requestResponse.failed("UMKM tidak ditemukan"));
 
-    const { umkmName, alamat, phone, image, rating, category, description } = req.body;
+    const { umkmId, umkmName, alamat, phone, image, rating, category, description } = req.body;
 
     await UMKM.update(
       {
+        umkmId,
         umkmName,
         alamat,
         phone,
