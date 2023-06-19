@@ -43,32 +43,11 @@ export const getUMKMById = async (req, res) => {
 };
 
 export const createUMKM = async (req, res) => {
-  if (req.files === null)
-    return res
-      .status(400)
-      .json(requestResponse.failed("Tidak ada file yang di tambahkan"));
-
-  const file = req.files.image;
-  const fileSize = file.data.length;
-  const ext = path.extname(file.name);
-  const fileName = file.name;
-  const allowedType = [".png", ".jpg", ".jpeg"];
-
-  if (!allowedType.includes(ext.toLowerCase()))
-    return res.status(422).json(requestResponse.failed("Invalid Image"));
-
-  if (fileSize > 6000000)
-    return res
-      .status(422)
-      .json(requestResponse.failed("Gambar harus lebih kecil dari 5 mb"));
-
-  file.mv(`./static/images/${fileName}`, async (err) => {
-    if (err) return res.status(500).json(requestResponse.failed(err.message));
-    const { umkmName, category, description } = req.body;
+    const { umkmName, image, category, description } = req.body;
     try {
       await UMKM.create({
         umkmName,
-        image: fileName,
+        image,
         category,
         description,
       });
@@ -78,7 +57,6 @@ export const createUMKM = async (req, res) => {
     } catch (error) {
       res.status(500).json(requestResponse.serverError(error.message));
     }
-  });
 };
 
 export const updateUMKM = async (req, res) => {
@@ -94,40 +72,12 @@ export const updateUMKM = async (req, res) => {
         .status(404)
         .json(requestResponse.failed("UMKM tidak ditemukan"));
 
-    let fileName = "";
-
-    if (req.files === null) {
-      fileName = umkm.image;
-    } else {
-      const file = req.files.image;
-      const fileSize = file.data.length;
-      const ext = path.extname(file.name);
-      fileName = file.name;
-      const allowedType = [".png", ".jpg", ".jpeg"];
-
-      if (!allowedType.includes(ext.toLowerCase()))
-        return res.status(422).json(requestResponse.failed("Invalid Image"));
-
-      if (fileSize > 5000000)
-        return res
-          .status(422)
-          .json(requestResponse.failed("Gambar harus lebih kecil dari 5 mb"));
-
-      const filePath = `./static/images/${umkm.image}`;
-      fs.unlinkSync(filePath);
-
-      file.mv(`./static/images/${fileName}`, (err) => {
-        if (err)
-          return res.status(500).json(requestResponse.failed(err.message));
-      });
-    }
-
-    const { umkmName, category, description } = req.body;
+    const { umkmName, image, category, description } = req.body;
 
     await UMKM.update(
       {
         umkmName,
-        image: fileName,
+        image,
         category,
         description,
       },
@@ -155,9 +105,6 @@ export const deleteUMKM = async (req, res) => {
       return res
         .status(404)
         .json(requestResponse.failed("UMKM tidak ditemukan"));
-
-    const filePath = `./static/images/${umkm.image}`;
-    fs.unlinkSync(filePath);
 
     await UMKM.destroy({
       where: {
