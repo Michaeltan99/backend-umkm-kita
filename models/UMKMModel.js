@@ -20,6 +20,13 @@ const UMKM = db.define('umkm', {
       notEmpty: true,
     },
   },
+  phone: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
   image: {
     type: DataTypes.STRING,
     allowNull: false,
