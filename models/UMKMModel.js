@@ -21,7 +21,7 @@ const UMKM = db.define('umkm', {
     },
   },
   phone: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
@@ -35,7 +35,7 @@ const UMKM = db.define('umkm', {
     },
   },
   rating: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
     validate: {
       notEmpty: true,
